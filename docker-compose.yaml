@@ -1,0 +1,18 @@
+version: "3"
+services:
+  container:
+    build: .
+    image: datasci:4.1.2
+    container_name: Datasci
+    tty: true
+    environment:
+      USER: rstudio
+      PASSWORD: PASSWORD
+    ports:
+      - "8787:8787"
+      - "5000:5000"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./init.vim:/home/rstudio/.config/nvim/init.vim
+      - ./Projects:/home/rstudio/Projects
+      - ~/.bashrc:/home/rstudio/.bashrc:ro
