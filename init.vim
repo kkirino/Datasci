@@ -6,7 +6,6 @@ Plug 'eigenfoo/stan-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
