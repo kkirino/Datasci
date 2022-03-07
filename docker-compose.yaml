@@ -14,5 +14,6 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./init.vim:/home/rstudio/.config/nvim/init.vim
-      - ./Projects:/home/rstudio/Projects
+      - ~/Projects/:/home/rstudio/Projects/
+      - ~/Documents/:/home/rstudio/Documents/
       - ~/.bashrc:/home/rstudio/.bashrc:ro

@@ -6,6 +6,7 @@ Plug 'eigenfoo/stan-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -24,6 +25,7 @@ set laststatus=2
 syntax on
 set number
 set expandtab
+set mouse=a
 
 " python, stan and sql code chunk in Rmd
 let g:rmd_fenced_languages = ['r', 'python', 'stan', 'sql']
@@ -44,3 +46,16 @@ augroup update_markdown_syntax
   autocmd!
   autocmd FileType markdown syntax match markdownError '\w\@<=\w\@='
 augroup END
+
+" coc.nvim
+let g:coc_global_extensions = ["coc-r-lsp", "coc-pyright", "coc-omni", "coc-explorer"]
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" coc-explorer
+nmap <space>e <Cmd>CocCommand explorer<CR>
+

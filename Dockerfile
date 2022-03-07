@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     python3-tk \
     sqlite3 \
     less \
+    trash-cli \
     x11-apps
 
 RUN cd ~ && \
@@ -55,7 +56,8 @@ RUN pip3 install \
     Flask \
     matplotlib \
     pandas \
-    xlsx2csv
+    xlsx2csv \
+    black
 
 USER rstudio
 RUN sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -72,5 +74,5 @@ RUN mkdir -p ~/.config/nvim
 RUN echo "Sys.setenv(TZ = 'JST')" > ~/.Rprofile
  
 USER root
-WORKDIR /home/rstudio/Projects
+WORKDIR /home/rstudio/
 

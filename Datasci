@@ -1,9 +1,19 @@
 #!/bin/bash
 
 CONTAINER=`docker ps | grep Datasci | wc -l`
-if [ ${CONTAINER}=0 ]; then
-    docker start Datasci;
+if [ ${CONTAINER} = 0 ]; then
+        docker start Datasci;
 fi
 
+if [[ `pwd` =~ ${HOME}/Projects ]]; then
+        DIR=`pwd | sed "s@^${HOME}@@"`
+elif [[ `pwd` =~ ${HOME}/Documents ]]; then
+        DIR=`pwd | sed "s@${HOME}@@"`
+else
+        DIR=""
+fi
+
+WORKDIR=/home/rstudio${DIR}
+
 ### WSL2 on Windows 10 ### 
-docker exec -it --user rstudio --env  DISPLAY=`cat /etc/resolv.conf | grep nameserver | awk '{print $2}'`:0.0 Datasci bash
+docker exec -it --user rstudio --env  DISPLAY=`cat /etc/resolv.conf | grep nameserver | awk '{print $2}'`:0.0 --workdir ${WORKDIR} Datasci bash
